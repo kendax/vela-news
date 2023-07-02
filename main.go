@@ -5,16 +5,16 @@ import (
 	"bytes"
 	"fmt"
 	"html/template"
-	"log"
+	//"log"
 	"math"
 	"net/http"
 	"net/url"
-	"os"
+	//"os"
 	"strconv"
 	"time"
 
         "github.com/freshman-tech/news-demo/news"
-	"github.com/joho/godotenv"
+	//"github.com/joho/godotenv"
 )
 
 var tpl = template.Must(template.ParseFiles("index.html"))
@@ -102,19 +102,19 @@ func searchHandler(newsapi *news.Client) http.HandlerFunc {
 var newsapi *news.Client
 
 func main() {
-	err := godotenv.Load()
+	/*err := godotenv.Load()
 	if err != nil {
 		log.Println("Error loading .env file")
-	}
+	}*/
 
-	port := os.Getenv("PORT")
-	if port == "" {
+	port := "3000"
+	/*if port == "" {
 		port = "3000"
-	}
-	apiKey := os.Getenv("NEWS_API_KEY")
-	if apiKey == "" {
+	}*/
+	apiKey := "1c875b5100634a6889b9b87fa135bd80"
+	/*if apiKey == "" {
 		log.Fatal("Env: apiKey must be set")
-	}
+	}*/
 
 	myClient := &http.Client{Timeout: 10 * time.Second}
 	newsapi := news.NewClient(myClient, apiKey, 20)
